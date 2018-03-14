@@ -1,0 +1,14 @@
+<% if @user.errors.full_messages.any? %>
+  <% @user.errors.full_messages.each do |error_message| %>
+    <%= error_message %> <br />
+  <% end %>
+<% end %>
+<%= form_for(@user) do |f| %>
+  <p>First name: <%= f.text_field :first_name %></p>
+  <p>Last name: <%= f.text_field :last_name %></p>
+  <p>Email: <%= f.text_field :email %></p>
+  <p>Email cofirmation: <%= f.text_field :email_confirmation %></p>
+  <p>Country: <%= f.text_field :country %></p>
+  <p>City: <%= f.text_field :city %></p>
+<%= f.submit %>
+<% end %>
