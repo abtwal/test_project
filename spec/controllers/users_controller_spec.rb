@@ -12,13 +12,17 @@ describe UsersController do
 
   describe "GET #new" do
     it "new user card" do
+      country = FactoryBot.create(:country)
+      country = FactoryBot.create(:city)
       get :new
-      expect(response).to render_template(:new)
+      expect(response).to be_success
     end
   end
 
   describe "GET #create" do
     it "creates a new user with valid attributes" do
+      country = FactoryBot.create(:country)
+      country = FactoryBot.create(:city)
       attrs = FactoryBot.attributes_for(:user)
       user_attrs = {user: attrs}
       expect(post :create, params: user_attrs).to have_http_status(200)

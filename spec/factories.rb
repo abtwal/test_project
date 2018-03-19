@@ -5,7 +5,7 @@ FactoryBot.define do
   end
 
   factory :city do
-    country_id Country.where(name: "Belarus").first.id
+    country
     name "Minsk"
   end
 
@@ -13,8 +13,8 @@ FactoryBot.define do
     first_name "Joe"
     last_name "Mitchel"
     email "joe@gmail.com"
-    country Country.where(name: "Belarus").first
-    city City.where(name: "Minsk").first
+    country
+    city
   end
 
 
