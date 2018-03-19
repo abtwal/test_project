@@ -10,17 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180314082614) do
+ActiveRecord::Schema.define(version: 20180315075610) do
+
+  create_table "cities", force: :cascade do |t|
+    t.string "name"
+    t.integer "country_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["country_id"], name: "index_cities_on_country_id"
+  end
+
+  create_table "countries", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "first_name"
     t.string "last_name"
     t.string "email"
-    t.string "confirm_email"
-    t.string "country"
-    t.string "city"
+    t.integer "country_id"
+    t.integer "city_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["city_id"], name: "index_users_on_city_id"
+    t.index ["country_id"], name: "index_users_on_country_id"
   end
 
 end

@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="card border-primary mb-3" >
+        <div class="card-header">
+          <h1>User card</h1>
+        </div>
+        <div class="card-body">
+          <ul class="list-group list-group-flush">
+            <li class="list-group-item">First name: <%= @user.first_name %></li>
+            <li class="list-group-item">Last name: <%= @user.last_name %></li>
+            <li class="list-group-item">Email: <%= @user.email %></li>
+            <li class="list-group-item">Country: <%= @user.country.name %></li>
+            <li class="list-group-item">City: <%= @user.city.name %></li>
+            <li class="list-group-item">
+              <%= link_to "New User", new_user_path, class: "card-link" %>
+              <%= link_to  "Send me user card", user_path(:send => 'true'), class: "card-link" %>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

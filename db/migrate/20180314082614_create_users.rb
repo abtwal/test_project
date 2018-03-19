@@ -4,9 +4,9 @@ class CreateUsers < ActiveRecord::Migration[5.1]
       t.string :first_name
       t.string :last_name
       t.string :email
-      t.string :confirm_email
-      t.string :country
-      t.string :city
+      t.references :country, foreign_key: true
+      t.references :city, foreign_key: true
+
 
       t.timestamps
     end

@@ -1,2 +1,32 @@
-<h1>New User</h1>
-<%= render partial: "form" %>
+<div class="container">
+  <div class="row">
+    <div class="col-6">
+      <div class="card border-primary mb-3">
+        <div class="card-header">
+          <h1>New User</h1>
+        </div>
+        <div class="card-body">
+          <div class="text-muted">
+            <% if @user.errors.full_messages.any? %>
+              <% @user.errors.full_messages.each do |error_message| %>
+                <%= error_message %> <br />
+              <% end %>
+            <% end %>
+          </div>
+          <%= form_for(@user, id: "user_form",) do |f| %>
+            <div class="form-group">
+              <p><%= f.text_field :first_name, class: "form-control", placeholder: "First name" %></p>
+              <p><%= f.text_field :last_name, class: "form-control", placeholder: "Last name" %></p>
+              <p><%= f.text_field :email, class: "form-control", placeholder: "Email" %></p>
+              <p><%= f.text_field :email_confirmation, class: "form-control", placeholder: "Email confirmation" %></p>
+              <p><%= f.select :country_id, options_for_select(@countries.collect { |country| [country.name, country.id] }, 1), {}, { id: 'countries_select', class: "form-control form-control-md"}  %></p>
+              <p><%= f.select :city_id, options_for_select(@cities.collect { |city| [city.name, city.id] }, 0), {}, { id: 'cities_select' , class: "form-control form-control-md"} %></p>
+            </div>
+            <button class="btn btn-outline-primary" type="f.submit" >Submit
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
